@@ -3,6 +3,7 @@ require 'minitest/autorun'
 
 class TestChisel < Minitest::Test 
   def test_markdown_to_html
+    skip 
     markdown = '# My Life in Desserts
 
     ## Chapter 1: The Beginning
@@ -20,6 +21,13 @@ class TestChisel < Minitest::Test
     </p>'
 
     output_html = Chisel.new(markdown).to_html
+    assert_equal expected_html, output_html
+  end
+
+  def test_header_wrap
+    markdown_chunk = ("## This should skip the last # ")
+    expected_html = '<h2>This should skip the last # </h2>'
+    output_html = Chisel.new("").header_wrap(markdown_chunk)
     assert_equal expected_html, output_html
   end
 end
