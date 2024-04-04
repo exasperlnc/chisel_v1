@@ -29,6 +29,10 @@ class Chisel
     level = chunk[0...first_char].count('#')
     "<h#{level}>#{chunk[first_char..-1]}</h#{level}>"
   end
+
+  def paragraph_wrap(chunk)
+    "<p>\n  #{chunk}\n</p>"
+  end
 end
 # Let there be a markdown parser
 # read the md file
