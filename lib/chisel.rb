@@ -39,10 +39,13 @@ class Chisel
   end
   
   def remove_asterisks(chunk)
-    counter = 0
+    counter          = 0
     even_replacement = '<em>'
     odd_replacement  = '</em>'
-    chunk.gsub('*') { |match| counter += 1; counter.odd? ? even_replacement : odd_replacement }
+    first_sub        = chunk.gsub('*') { |match| counter += 1; counter.odd? ? even_replacement : odd_replacement }
+    even_replacement = '<strong>'
+    odd_replacement  = '</strong>'
+    first_sub.gsub('<em></em>') { |match| counter += 1; counter.odd? ? even_replacement : odd_replacement }
   end
 end
 # Let there be a markdown parser
