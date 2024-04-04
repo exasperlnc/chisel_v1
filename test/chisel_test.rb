@@ -30,4 +30,11 @@ class TestChisel < Minitest::Test
     output_html = Chisel.new("").header_wrap(markdown_chunk)
     assert_equal expected_html, output_html
   end
+
+  def test_paragraph_wrap 
+    markdown = "Yeetus mc fleetus my guy"
+    expected_html = "<p>\n  Yeetus mc fleetus my guy\n<p>"
+    output_html = Chisel.new("").paragraph_wrap(markdown)
+    assert_equal expected_html, output_html
+  end
 end
