@@ -35,6 +35,7 @@ class Chisel
   end
 
   def chunks_to_string(chunks)
+    chunks.join("\n\n")
   end 
 end
 # Let there be a markdown parser

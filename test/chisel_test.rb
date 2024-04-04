@@ -39,9 +39,9 @@ class TestChisel < Minitest::Test
   end
 
   def test_chunks_to_string
-    markdown_chunks = ["## this is a header", "### this is a smaller header", "This is not a header", "neither is this"]
+    markdown_chunks = ["<h2>this is a header</h2>", "<h3>this is a smaller header</h3>", "<p>\nThis is not a header\n</p>", "<p>\nneither is this\n</p>"]
     output_html = Chisel.new("").chunks_to_string(markdown_chunks)
-    expected_html = "<h2>this is a header</h2>\n\nthis is a smaller header\n\n<p>\nThis is not a header\n</p>\n\n<p>\nneither is this\n</p>"
+    expected_html = "<h2>this is a header</h2>\n\n<h3>this is a smaller header</h3>\n\n<p>\nThis is not a header\n</p>\n\n<p>\nneither is this\n</p>"
     assert_equal expected_html, output_html 
   end
 end
