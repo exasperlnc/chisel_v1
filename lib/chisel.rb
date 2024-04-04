@@ -9,8 +9,8 @@ class Chisel
 end
 # Let there be a markdown parser
 # read the md file
-program_running? = ($PROGRAM_NAME == __FILE__)
-if program_running?
+program_running = ($PROGRAM_NAME == __FILE__)
+if program_running
   markdown_file = ARGV[0]
   html_file = ARGV[1]
   markdown = File.read(markdown_file)
