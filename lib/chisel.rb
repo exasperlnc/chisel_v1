@@ -33,6 +33,9 @@ class Chisel
   def paragraph_wrap(chunk)
     "<p>\n  #{chunk}\n</p>"
   end
+
+  def chunks_to_string(chunks)
+  end 
 end
 # Let there be a markdown parser
 # read the md file
