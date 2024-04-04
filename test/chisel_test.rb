@@ -3,13 +3,8 @@ require 'minitest/autorun'
 
 class TestChisel < Minitest::Test 
   def test_markdown_to_html
-    skip 
-    markdown = '# My Life in Desserts
-
-    ## Chapter 1: The Beginning
-    
-    "You just *have* to try the cheesecake," he said. "Ever since it appeared in
-    **Food & Wine** this place has been packed every night."'
+    skip
+    markdown = File.read('./my_input.md')
 
     expected_html = '<h1>My Life in Desserts</h1>
 
@@ -43,5 +38,12 @@ class TestChisel < Minitest::Test
     output_html = Chisel.new("").chunks_to_string(markdown_chunks)
     expected_html = "<h2>this is a header</h2>\n\n<h3>this is a smaller header</h3>\n\n<p>\nThis is not a header\n</p>\n\n<p>\nneither is this\n</p>"
     assert_equal expected_html, output_html 
+  end
+
+  def test_asterisks_to_emphasis
+    markdown      = 'this has ** in it and they should go away *ASAP*'
+    expected_html = 'this has <em></em> in it and they should go away <em>ASAP</em>'
+    output_html   = Chisel.new("").remove_asterisks(markdown)
+    assert_equal expected_html, output_html
   end
 end
