@@ -35,8 +35,15 @@ class Chisel
   end
 
   def chunks_to_string(chunks)
-    chunks.join("\n\n")
-  end 
+    remove_asterisks((chunks.join("\n\n")))
+  end
+  
+  def remove_asterisks(chunk)
+    counter = 0
+    even_replacement = '<em>'
+    odd_replacement  = '</em>'
+    chunk.gsub('*') { |match| counter += 1; counter.odd? ? even_replacement : odd_replacement }
+  end
 end
 # Let there be a markdown parser
 # read the md file

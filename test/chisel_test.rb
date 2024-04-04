@@ -3,7 +3,6 @@ require 'minitest/autorun'
 
 class TestChisel < Minitest::Test 
   def test_markdown_to_html
-    skip
     markdown = File.read('./my_input.md')
 
     expected_html = '<h1>My Life in Desserts</h1>
